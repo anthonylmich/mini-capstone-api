@@ -15,4 +15,12 @@ class ProductsController < ApplicationController
     product = Product.all[1]
     render json: product.as_json
   end
+  def third_product
+    product = Product.all[2]
+    render json: product.as_json
+  end
+  def fourth_product
+    product = Product.all[3]
+    render json: product.as_json
+  end
 end
