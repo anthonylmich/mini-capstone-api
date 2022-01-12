@@ -12,15 +12,15 @@ class ProductsController < ApplicationController
     render json: product.as_json
   end
   def second_product
-    product = Product.all[1]
+    product = Product.second
     render json: product.as_json
   end
   def third_product
-    product = Product.all[2]
+    product = Product.third
     render json: product.as_json
   end
   def fourth_product
-    product = Product.all[3]
+    product = Product.fourth
     render json: product.as_json
   end
 end
