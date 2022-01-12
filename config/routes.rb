@@ -6,6 +6,8 @@ get "/last_product", controller: "products", action: "last_product"
 get "/second_product", controller: "products", action: "second_product"
 get "/third_product", controller: "products", action: "third_product"
 get "/fourth_product", controller: "products", action: "fourth_product"
+get "/choose_product/:wildcard" => "products#product"
+get "/choose_product" => "products#product"
   # Defines the root path route ("/")
   # root "articles#index"
 end

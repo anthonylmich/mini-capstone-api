@@ -23,4 +23,12 @@ class ProductsController < ApplicationController
     product = Product.fourth
     render json: product.as_json
   end
+  def product
+     id = params[:wildcard]
+     id = id.to_i
+    product = Product.find_by(id:id)
+    render json: product.as_json
+  end
+
+
 end
