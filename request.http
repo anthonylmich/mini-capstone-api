@@ -48,6 +48,38 @@ Content-Type: application/json
 }
 
 ### products create
-GET  http://localhost:3000/products
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDMxNDE3NjF9.fOOTKfTjjhwR8Af_-jUQzuV2daiMQH5vtbUewbM3rkU
+POST http://localhost:3000/orders
 Content-Type: application/json
+
+{
+  "product_id": 1,
+  "user_id": 1,
+  "quantity": 3,
+  "subtotal": 1.00,
+  "tax": 2.00,
+  "total": 3.00
+}
+
+###
+GET http://localhost:3000/orders/1
+
+###
+GET http://localhost:3000/orders
+
+###
+POST http://localhost:3000/orders
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDMyMjMwOTV9.1rJYgrQcpx5vJ_Bw53JzSOqt76hJQeZV40hcUB1ag3k
+
+{
+  "product_id": 4,
+  "quantity": 3
+}
+
+###
+GET http://localhost:3000/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDMyMjMwOTV9.1rJYgrQcpx5vJ_Bw53JzSOqt76hJQeZV40hcUB1ag3k
+
+###
+GET http://localhost:3000/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDMyMjMwOTV9.1rJYgrQcpx5vJ_Bw53JzSOqt76hJQeZV40hcUB1ag3k

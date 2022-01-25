@@ -10,6 +10,8 @@ delete "/products/:id" => "products#delete"
 post "/users" => "users#create"
 post "/sessions" => "sessions#create"
 
-# post "/orders" => "orders#create"
+ post "/orders" => "orders#create"
+ get "/orders/:id" => "orders#show"
+ get "/orders" => "orders#index"
 # post "/orders/:id" => "orders#show"
 end
