@@ -1,34 +1,53 @@
 class ProductsController < ApplicationController
-  def products_all
+  def index
     products = Product.all
+    if params[:name]
+      name = params[:name]
+      products = products.where("name iLIKE ?", "%#{name}%" )
+    end
+    if params[:sort] == "price"
+      products = products.order(:price)
+    end
     render json: products.as_json
   end
-  def first_product
-    product = Product.first
-    render json: product.as_json
+
+  def create
+    product = Product.new(
+      name: params[:name], 
+      price: params[:price], 
+      description: params[:description]
+    )
+    if product.save
+      render json: product
+    else
+      render json:{errors: product.errors.full_message}
+    end
   end
-  def last_product
-    product = Product.last
-    render json: product.as_json
+
+  def update
+    product = Product.find(params[:id])
+    product.name = params[:name] || product.name
+    product.price = params[:price] || product.price
+    product.image_url = params[:image_url] || product.image_url
+    product.description = params[:description] || product.description
+    product.inventory = params[:inventory] || product.inventory
+    if product.save
+      render json: product
+    else
+      render json:{errors: product.errors.full_message}
+    end
   end
-  def second_product
-    product = Product.second
-    render json: product.as_json
-  end
-  def third_product
-    product = Product.third
-    render json: product.as_json
-  end
-  def fourth_product
-    product = Product.fourth
-    render json: product.as_json
-  end
-  def product
-     id = params[:wildcard]
+
+  def show
+     id = params[:id]
      id = id.to_i
     product = Product.find_by(id:id)
-    render json: product.as_json
+    render json: product
   end
 
-
+  def delete
+    product = Product.find(params[:id])
+    product.destroy
+    render json: {message: "The product had been succesfully destroyed"}
+  end
 end

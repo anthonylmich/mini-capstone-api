@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-get "/products_all", controller: "products", action: "products_all"
-get "/first_product", controller: "products", action: "first_product"
-get "/last_product", controller: "products", action: "last_product"
-get "/second_product", controller: "products", action: "second_product"
-get "/third_product", controller: "products", action: "third_product"
-get "/fourth_product", controller: "products", action: "fourth_product"
-get "/choose_product/:wildcard" => "products#product"
+get "/products" => "products#index"
+post "/products" => "products#create"
+get "/products/:id" => "products#show"
 get "/choose_product" => "products#product"
-  # Defines the root path route ("/")
-  # root "articles#index"
+patch "/products/:id" => "products#update"
+delete "/products/:id" => "products#delete"
+  
+post "/users" => "users#create"
+post "/sessions" => "sessions#create"
+
+# post "/orders" => "orders#create"
+# post "/orders/:id" => "orders#show"
 end
