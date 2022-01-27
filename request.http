@@ -1,22 +1,27 @@
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDMzMDk3NTd9.oEqSpzrwRzDukPiOHltj8K2wde9aQ17P-FQ3FKYN1CA
+@domain = http://localhost:3000
 
-GET http://localhost:3000/products
-
-###
-
-GET http://localhost:3000/products/7
+GET {{domain}}/products
 
 ###
-POST http://localhost:3000/products
+
+GET {{domain}}/products/7
+
+###
+POST {{domain}}/products
 Content-Type: application/json
+Authorization: Bearer {{jwt}}
 
 {
-  "name": "Book",
+  "name": "rubber duck",
   "price": 5,
-  "description": "An intro-level book on making books."
+  "description": "your portable therapist and counsleor for when your code just doesn't work like they used to.",
+  "inventory": 30,
+  "supplier_id": 2
 }
 
 ###
-PATCH http://localhost:3000/products/1
+PATCH {{domain}}/products/1
 Content-Type: application/json
 
 {
@@ -25,10 +30,10 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/products/5
+DELETE {{domain}}/products/5
 
 ### Users create (signup)
-POST http://localhost:3000/users
+POST {{domain}}/users
 Content-Type: application/json
 
 {
@@ -39,16 +44,16 @@ Content-Type: application/json
 }
 
 ### Sessions create (login)
-POST http://localhost:3000/sessions
+POST {{domain}}/sessions
 Content-Type: application/json
 
 {
-  "email": "His-Dudeness@gmail.com",
+  "email": "Admin@gmail.com",
   "password": "password"
 }
 
 ### products create
-POST http://localhost:3000/orders
+POST {{domain}}/orders
 Content-Type: application/json
 
 {
@@ -61,15 +66,15 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/orders/1
+GET {{domain}}/orders/1
 
 ###
-GET http://localhost:3000/orders
+GET {{domain}}/orders
 
 ###
-POST http://localhost:3000/orders
+POST {{domain}}/orders
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDMyMjMwOTV9.1rJYgrQcpx5vJ_Bw53JzSOqt76hJQeZV40hcUB1ag3k
+Authorization: Bearer {{jwt}}
 
 {
   "product_id": 4,
@@ -77,9 +82,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDMyMjMwO
 }
 
 ###
-GET http://localhost:3000/orders
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDMyMjMwOTV9.1rJYgrQcpx5vJ_Bw53JzSOqt76hJQeZV40hcUB1ag3k
+GET {{domain}}/orders
+Authorization: Bearer {{jwt}}
 
 ###
-GET http://localhost:3000/orders
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDMyMjMwOTV9.1rJYgrQcpx5vJ_Bw53JzSOqt76hJQeZV40hcUB1ag3k
+GET {{domain}}/orders
+Authorization: Bearer {{jwt}}

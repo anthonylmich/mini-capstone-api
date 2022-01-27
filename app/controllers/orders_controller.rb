@@ -1,12 +1,17 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user
   def create
+    product = Product.find(params[:product_id])
+    subtotal = product.price * params[:quantity]
+    tax = product.price * 0.1 * params[:quantity]
+    total = subtotal + tax
     order = Order.new(
       product_id: params[:product_id], 
       user_id: current_user.id, 
       quantity: params[:quantity],
-      subtotal: Product.find(params[:product_id]).price * params[:quantity],
-      tax: Product.find(params[:product_id]).price * 0.1 * params[:quantity], 
-      total: Product.find(params[:product_id]).price * params[:quantity] + Product.find(params[:product_id]).price * 0.1 * params[:quantity]
+      subtotal: subtotal,
+      tax: tax ,
+      total: total
     )
     if order.save
       render json: order
@@ -16,13 +21,16 @@ class OrdersController < ApplicationController
   end
 
   def show
-    id = params[:id].to_i
-    order = Order.find(id)
-    render json: order.as_json
+    order = current_user.orders.find(params[:id].to_i)
+    if order
+      render json: order.as_json
+    else 
+      render json: [], status: :unauthorized
+    end
   end
     
   def index
-    orders = Order.all
+    orders = current_user.orders
     render json: orders.as_json
   end
 end
