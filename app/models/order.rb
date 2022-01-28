@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
-  belongs_to :product
   belongs_to :user
+  has_many :carted_products
+  has_many :product, through: :carted_products
 end
 
 #Make a orders create create route in the routes file

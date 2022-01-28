@@ -1,4 +1,4 @@
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDMzMDk3NTd9.oEqSpzrwRzDukPiOHltj8K2wde9aQ17P-FQ3FKYN1CA
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDM0ODgwNjB9.Y0DhNUa6PQAE9Z_keg8EzaawVSGGETDW6JxhoC6v61w
 @domain = http://localhost:3000
 
 GET {{domain}}/products
@@ -88,3 +88,14 @@ Authorization: Bearer {{jwt}}
 ###
 GET {{domain}}/orders
 Authorization: Bearer {{jwt}}
+
+### carted_products create
+POST {{domain}}/carts
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+  "product_id": 1,
+  "quantity": 3,
+  "status": "carted"
+}

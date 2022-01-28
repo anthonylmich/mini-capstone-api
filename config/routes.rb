@@ -14,4 +14,8 @@ post "/sessions" => "sessions#create"
  get "/orders/:id" => "orders#show"
  get "/orders" => "orders#index"
 # post "/orders/:id" => "orders#show"
+post "/carts" => "carted_products#create"
+get "/carts" => "carted_products#index"
+post "/carts" => "carted_products#destroy"
+
 end

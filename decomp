@@ -1,0 +1,6 @@
+Write out all the steps necessary for your mini-capstone-api to allow users to purchase multiple products with a shopping cart. (aim for roughly 10 to 15 steps)
+
+1.)make a new table called shopping_cart/carted_products that have multiple columns 
+2.)add foreign keys to the table you just made.
+3.)feed in some new/make instance data for the table
+4.)change the orders table to 
